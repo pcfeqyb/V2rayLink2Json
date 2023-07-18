@@ -6,6 +6,8 @@ it use v2ray_config.json as a template so you can customize it.<br>
 # Usage example
 java -jar Link2Json.jar "vless://...."<br>
 java -jar Link2Json.jar "vmess://...."<br>
+java -jar Link2Json.jar "ss://...."<br>
+...<br>
 java -jar Link2Json.jar "file_contain_a_link.txt"<br>
 
 # parsing technology
