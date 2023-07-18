@@ -14,4 +14,9 @@ java -jar Link2Json.jar "file_contain_a_link.txt"<br>
 the parsing code is exactly copied from v2rayNG 1.8.5<br>
 and is compatible with almost all protocol untill today (July 2023) including reality & so on.<br>
 
+# compile
+use Intellij -> {kotlin + Maven}
 
+# build executable jar 
+project structure -> artifact -> jar -> ...<br>
+build menu -> build artifact<br>
