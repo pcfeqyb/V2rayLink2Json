@@ -1,4 +1,4 @@
-# using GraalVM but it fail to capture reflection class used in com.google.gson
+# using GraalVM but it fail to capture reflection class loaded in runtime by com.google.gson
 
 # instruction:
 
