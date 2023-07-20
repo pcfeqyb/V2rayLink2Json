@@ -257,10 +257,11 @@ class ConfigManager {
             return guid
 
              */
-            println(config)
+//            println(config)
             return config
         } catch (e: Exception) {
-            e.printStackTrace()
+//            e.printStackTrace()
+            println("Parsing Problem => "+e.toString())
             return null
         }
         return null
