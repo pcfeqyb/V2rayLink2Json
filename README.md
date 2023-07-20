@@ -4,11 +4,11 @@ generate config.json to be used with xray-core<br>
 it use v2ray_config.json as a template so you can customize it.<br>
 
 # Usage example
-java -jar Link2Json.jar "vless://...."<br>
-java -jar Link2Json.jar "vmess://...."<br>
-java -jar Link2Json.jar "ss://...."<br>
-...<br>
-java -jar Link2Json.jar "file_contain_a_link.txt"<br>
+java -jar Link2Json.jar ["output filename"] "vless://...."<br>
+java -jar Link2Json.jar ["output filename"] "vmess://...."<br>
+java -jar Link2Json.jar ["output filename"] "trojan://...."<br>
+java -jar Link2Json.jar ["output filename"] "ss://...."<br>
+java -jar Link2Json.jar ["output filename"] "file_contain_a_v2ray_link.txt"<br>
 
 # parsing technology
 the parsing code is exactly copied from v2rayNG 1.8.5<br>
