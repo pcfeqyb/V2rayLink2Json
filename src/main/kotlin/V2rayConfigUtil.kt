@@ -114,8 +114,12 @@ object V2rayConfigUtil {
      */
     private fun inbounds(v2rayConfig: V2rayConfig): Boolean {
         try {
-            //val socksPort = Utils.parseInt(AppConfig.PREF_SOCKS_PORT, AppConfig.PORT_SOCKS.toInt())
-            //val httpPort = Utils.parseInt(AppConfig.PREF_HTTP_PORT, AppConfig.PORT_HTTP.toInt())
+//
+//            val socksPort = Utils.parseInt(AppConfig.PREF_SOCKS_PORT, AppConfig.PORT_SOCKS.toInt())
+//            val httpPort = Utils.parseInt(AppConfig.PREF_HTTP_PORT, AppConfig.PORT_HTTP.toInt())
+//
+            val socksPort = Utils.parseInt(AppConfig.PORT_SOCKS , 10808)
+            val httpPort = Utils.parseInt(AppConfig.PORT_HTTP , 10809)
 
             /*
             v2rayConfig.inbounds.forEach { curInbound ->
@@ -126,7 +130,7 @@ object V2rayConfigUtil {
             }
             */
 
-            //v2rayConfig.inbounds[0].port = socksPort
+            v2rayConfig.inbounds[0].port = socksPort
 
             val fakedns = false
             val sniffAllTlsAndHttp = true
@@ -138,7 +142,7 @@ object V2rayConfigUtil {
                 v2rayConfig.inbounds[0].sniffing?.destOverride?.add("fakedns")
             }
 
-            //v2rayConfig.inbounds[1].port = httpPort
+            v2rayConfig.inbounds[1].port = httpPort
 
 //            if (httpPort > 0) {
 //                val httpCopy = v2rayConfig.inbounds[0].copy()

@@ -7,6 +7,10 @@ import java.net.*
 //import sun.net.util.URLUtil
 import java.io.IOException
 
+import java.math.BigInteger
+import java.security.MessageDigest
+
+
 object Utils {
 
     /**
@@ -17,6 +21,14 @@ object Utils {
      */
 
 
+    fun md5_hash(input:String): String {
+        val md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
+    }
+
+    fun my_base64(input:String): String {
+        return Base64.getEncoder().encodeToString(input.toByteArray());
+    }
 
     /**
      * parseInt
