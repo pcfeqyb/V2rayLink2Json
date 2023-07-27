@@ -7,6 +7,9 @@ the link2json is part of project [xray_config_tester](https://github.com/GFW-kno
 ## Usage example
 java -jar Link2Json.jar [-p xray_port] [-o output.json] "v2ray_link"<br>
 java -jar Link2Json.jar [-p xray_port] [-o output.json] "file_contain_a_v2ray_link.txt"<br>
+<br>
+it create a json file form link<br>
+also return hash of outbound config which is independent of alias and other parts<br>
 
 ## parsing technology
 the parsing code is exactly copied from v2rayNG 1.8.5<br>
