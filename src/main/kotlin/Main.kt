@@ -13,6 +13,7 @@ fun main(args: Array<String>) {
     var myfile = ""
     var myport = ""
     var LNK = ""
+    var is_only_hash = false
 
 
     if(args.isNotEmpty()){
@@ -21,6 +22,16 @@ fun main(args: Array<String>) {
         if(args.size==1) {
             myfile = "config.json"
             LNK = args[0]
+
+        }else if(args.size==2){
+            val z1 = args[0]
+            if(z1=="-H"){
+                myfile = "config.json"
+                LNK = args[1]
+                is_only_hash = true
+            }else{
+                println("ERR : invalid option flag")
+            }
 
         }else if(args.size==3){
             val z = args[0]
@@ -72,7 +83,7 @@ fun main(args: Array<String>) {
             println("invalid protocol link")
         }
     }else{
-        println("Link2Json V1.4\r\narg is empty.\r\nusage:\r\njava -jar Link2Json.jar [-p xray_port] [-o output.json] \"v2raylink\"\r\njava -jar Link2Json.jar [-p xray_port] [-o output.json] \"file_contain_v2rayLink.txt\"")
+        println("Link2Json V1.5\r\narg is empty.\r\nusage:\r\njava -jar Link2Json.jar -H \"v2raylink\"  ==> only hash returned\r\njava -jar Link2Json.jar [-p xray_port] [-o output.json] \"v2raylink\"\r\njava -jar Link2Json.jar [-p xray_port] [-o output.json] \"file_contain_v2rayLink.txt\"")
     }
 
     if( mylink.isEmpty() ){
@@ -124,32 +135,39 @@ fun main(args: Array<String>) {
             println("hash_of_outbnd_config--->$$$$$$$s89$$$$$$$")
 
 
-            status = V2rayConfigUtil.writeTextToLocalFile(myfile,result.content)
-            if(status){
-                val listen_HTTP = AppConfig.PORT_HTTP
-                val listen_Socks = AppConfig.PORT_SOCKS
-                println("successfully write ==> file=$myfile  xray_HTTP=$listen_HTTP  xray_Socks=$listen_Socks")
-            }else{
-                println("failed to write file")
+            if(!is_only_hash) {
+                status = V2rayConfigUtil.writeTextToLocalFile(myfile, result.content)
+                if(status){
+                    val listen_HTTP = AppConfig.PORT_HTTP
+                    val listen_Socks = AppConfig.PORT_SOCKS
+                    println("successfully write ==> file=$myfile  xray_HTTP=$listen_HTTP  xray_Socks=$listen_Socks")
+                }else{
+                    println("failed to write file")
+                }
             }
+
         }else{
             println("parsing failed")
-            status = V2rayConfigUtil.writeTextToLocalFile(myfile,"")
-            if(status){
-                println("write \"Empty String\" to ==> "+myfile)
-            }else{
-                println("failed to write file")
+            if(!is_only_hash) {
+                status = V2rayConfigUtil.writeTextToLocalFile(myfile, "")
+                if (status) {
+                    println("write \"Empty String\" to ==> " + myfile)
+                } else {
+                    println("failed to write file")
+                }
             }
         }
 
 
     }else{
         println("link is corrupt")
-        status = V2rayConfigUtil.writeTextToLocalFile(myfile,"")
-        if(status){
-            println("write \"Empty String\" to ==> "+myfile)
-        }else{
-            println("failed to write file")
+        if(!is_only_hash) {
+            status = V2rayConfigUtil.writeTextToLocalFile(myfile, "")
+            if (status) {
+                println("write \"Empty String\" to ==> " + myfile)
+            } else {
+                println("failed to write file")
+            }
         }
     }
 
